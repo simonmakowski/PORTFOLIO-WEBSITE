@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CV — Szymon Makowski</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --bg2: #ffffff;
+    --text: #1d1d1f;
+    --text-muted: #6e6e73;
+    --accent: #0071e3;
+    --border: rgba(0,0,0,0.08);
+    --radius: 20px;
+    --shadow: 0 4px 40px rgba(0,0,0,0.07);
+    --font: -apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  [data-theme="dark"] {
+    --bg: #1c1c1e;
+    --bg2: #2c2c2e;
+    --text: #f5f5f7;
+    --text-muted: #98989d;
+    --accent: #0a84ff;
+    --border: rgba(255,255,255,0.1);
+    --shadow: 0 4px 40px rgba(0,0,0,0.4);
+  }
+  [data-theme="dark"] nav { background: rgba(28,28,30,0.85); }
+  [data-theme="dark"] .print-btn { border-color: rgba(255,255,255,0.15); color: var(--text); }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(245,245,247,0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-size: 17px; font-weight: 600; letter-spacing: -0.4px; color: var(--text); text-decoration: none; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+
+  .print-btn {
+    font-family: var(--font); font-size: 13px; font-weight: 500;
+    padding: 7px 18px; border-radius: 100px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .print-btn:hover { background: var(--bg2); color: var(--text); }
+
+  .theme-toggle {
+    font-family: var(--font); width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg2);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; transition: all 0.2s; line-height: 1;
+  }
+  .theme-toggle:hover { transform: scale(1.1); background: var(--bg); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .lang-switch { display: flex; align-items: center; background: var(--bg2); border: 1px solid var(--border); border-radius: 100px; padding: 3px; gap: 2px; }
+  .lang-btn { font-family: var(--font); font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 100px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { background: var(--text); color: #fff; }
+  [data-theme="dark"] .lang-btn.active { background: #f5f5f7; color: #1d1d1f; }
+
+  /* LAYOUT */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 104px 48px 80px;
+  }
+
+  /* HERO HEADER */
+  .cv-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .cv-header-left { flex: 1; }
+  .cv-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); background: rgba(0,113,227,0.08);
+    border-radius: 100px; padding: 5px 14px; margin-bottom: 16px;
+  }
+  [data-theme="dark"] .cv-tag { background: rgba(10,132,255,0.12); }
+  .cv-name {
+    font-size: clamp(36px, 5vw, 56px); font-weight: 700;
+    letter-spacing: -0.04em; line-height: 1.06; margin-bottom: 10px;
+  }
+  .cv-title {
+    font-size: 18px; color: var(--text-muted); font-weight: 300; margin-bottom: 24px;
+  }
+  .cv-contacts {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .cv-contact-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--text-muted);
+    padding: 6px 14px; border-radius: 100px;
+    border: 1px solid var(--border); background: var(--bg2);
+    text-decoration: none; transition: color 0.2s, border-color 0.2s;
+  }
+  .cv-contact-pill:hover { color: var(--accent); border-color: var(--accent); }
+
+  .cv-header-photo {
+    width: 120px; height: 120px; flex-shrink: 0;
+    border-radius: 28px; overflow: hidden;
+    background: linear-gradient(135deg, #0071e3, #bf5af2);
+    box-shadow: var(--shadow);
+  }
+  .cv-header-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+  /* ABOUT */
+  .cv-about {
+    background: var(--bg2);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    border: 1px solid var(--border);
+    font-size: 16px; color: var(--text-muted); line-height: 1.75; font-weight: 300;
+    animation: fadeUp 0.7s ease 0.15s both;
+  }
+
+  /* SECTION */
+  .cv-section { margin-bottom: 56px; animation: fadeUp 0.7s ease 0.2s both; }
+  .cv-section + .cv-section { animation-delay: 0.28s; }
+  .cv-section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
+  }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 32px;
+    position: relative;
+    padding-bottom: 36px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 160px;
+    top: 28px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+    transform: translateX(calc(-50% + 16px));
+  }
+
+  .timeline-date {
+    font-size: 12px; font-weight: 500; color: var(--text-muted);
+    letter-spacing: 0.02em; padding-top: 3px; text-align: right;
+    padding-right: 32px;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 160px;
+    top: 6px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateX(calc(-50% + 12px));
+    box-shadow: 0 0 0 3px var(--bg);
+    flex-shrink: 0;
+  }
+  .timeline-body { padding-left: 4px; }
+  .timeline-title {
+    font-size: 17px; font-weight: 600; letter-spacing: -0.02em;
+    line-height: 1.3; margin-bottom: 4px;
+  }
+  .timeline-subtitle {
+    font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 12px;
+  }
+  .timeline-desc {
+    font-size: 14px; color: var(--text-muted); line-height: 1.65;
+  }
+  .timeline-list {
+    list-style: none; font-size: 14px; color: var(--text-muted);
+    line-height: 1.65; display: flex; flex-direction: column; gap: 6px;
+  }
+  .timeline-list li::before {
+    content: '—';
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: 600;
+  }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+  }
+  .skill-card-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+  }
+  .skill-card-items {
+    font-size: 14px; color: var(--text-muted); line-height: 1.65;
+  }
+  .skill-pill-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .skill-pill {
+    font-size: 12px; padding: 4px 12px; border-radius: 100px;
+    border: 1px solid var(--border); background: var(--bg);
+    color: var(--text-muted);
+  }
+
+  /* CERTS */
+  .certs-list {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .cert-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 20px;
+  }
+  .cert-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 10px; background: rgba(0,113,227,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+  }
+  [data-theme="dark"] .cert-icon { background: rgba(10,132,255,0.12); }
+  .cert-name { font-size: 15px; font-weight: 500; line-height: 1.4; margin-bottom: 2px; }
+  .cert-meta { font-size: 12px; color: var(--text-muted); }
+
+  /* FOOTER */
+  .cv-footer {
+    text-align: center;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--text-muted);
+    margin-top: 16px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PRINT */
+  @media print {
+    nav, .theme-toggle, .print-btn { display: none !important; }
+    body { background: #fff; color: #000; font-size: 11pt; }
+    .page { padding: 20px; max-width: 100%; }
+    .cv-header { margin-bottom: 24px; padding-bottom: 20px; }
+    .cv-about, .skill-card, .cert-item { border: 1px solid #ddd; box-shadow: none; }
+    .cv-section { margin-bottom: 28px; }
+    .timeline-item { padding-bottom: 18px; }
+    * { animation: none !important; }
+  }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    .page { padding: 88px 20px 60px; }
+    .cv-header { flex-direction: column-reverse; gap: 20px; margin-bottom: 40px; }
+    .cv-header-photo { width: 80px; height: 80px; border-radius: 20px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    .timeline-item::after, .timeline-dot { display: none; }
+    .timeline-date { text-align: left; padding-right: 0; margin-bottom: 4px; }
+    .timeline-body { padding-left: 0; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">← Szymon Makowski</a>
+  <div class="nav-right">
+    <a href="#" class="print-btn" data-i18n="nav_print" onclick="window.print(); return false;">🖨️ Drukuj</a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Przełącz tryb ciemny" onclick="toggleTheme()">🌙</button>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div class="cv-header-left">
+      <div class="cv-tag">Curriculum Vitae</div>
+      <h1 class="cv-name">Szymon Makowski</h1>
+      <p class="cv-title" data-i18n="cv_title">Specjalista ds. Mediów Społecznościowych &amp; Twórca Treści</p>
+      <div class="cv-contacts">
+        <a href="mailto:makowskifotografia@gmail.com" class="cv-contact-pill">✉️ makowskifotografia@gmail.com</a>
+        <a href="https://www.instagram.com/simon.makowski/" target="_blank" rel="noopener noreferrer" class="cv-contact-pill">📷 Instagram</a>
+        <a href="https://www.linkedin.com/in/szymon-makowski-a994811a1/" target="_blank" rel="noopener noreferrer" class="cv-contact-pill">💼 LinkedIn</a>
+      </div>
+    </div>
+    <div class="cv-header-photo">
+      <img src="assets/images/portrait.JPG" alt="Szymon Makowski" onerror="this.parentElement.style.background='linear-gradient(135deg,#0071e3,#bf5af2)'">
+    </div>
+  </header>
+
+  <!-- O MNIE -->
+  <div class="cv-about" data-i18n="cv_about">
+    Specjalista social media i twórca contentu — wideo, fotografia, grafika — z doświadczeniem w komunikacji cyfrowej i produkcji materiałów od koncepcji po publikację. Zajmuję się również montażem wideo, tworząc spójne narracje wizualne dla marek i projektów, które mają coś do powiedzenia.
+  </div>
+
+  <!-- DOŚWIADCZENIE -->
+  <section class="cv-section">
+    <p class="cv-section-label" data-i18n="exp_label">Doświadczenie zawodowe</p>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date" data-i18n="exp1_date">06.2024 — obecnie</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Urząd Miasta Bydgoszczy</div>
+          <div class="timeline-subtitle" data-i18n="exp1_sub">Specjalista ds. Mediów Społecznościowych</div>
+          <ul class="timeline-list">
+            <li data-i18n="exp1_li1">Zarządzanie i rozwój oficjalnych kanałów social media miasta</li>
+            <li data-i18n="exp1_li2">Tworzenie i publikacja treści (wideo, foto, grafiki)</li>
+            <li data-i18n="exp1_li3">Realizacja materiałów promocyjnych i relacji z wydarzeń</li>
+            <li data-i18n="exp1_li4">Współtworzenie komunikacji cyfrowej i wizerunku online</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date" data-i18n="exp2_date">2018 — obecnie</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Freelance</div>
+          <div class="timeline-subtitle" data-i18n="exp2_sub">Fotograf / Twórca Treści</div>
+          <ul class="timeline-list">
+            <li data-i18n="exp2_li1">Realizacja projektów foto-wideo dla klientów komercyjnych i medialnych</li>
+            <li data-i18n="exp2_li2">Produkcja, postprodukcja i dostarczanie materiałów promocyjnych</li>
+            <li data-i18n="exp2_li3">Obsługa wydarzeń i projektów wizerunkowych</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUKACJA -->
+  <section class="cv-section">
+    <p class="cv-section-label" data-i18n="edu_label">Edukacja</p>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021 — 2025</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Wyższa Szkoła Gospodarki</div>
+          <div class="timeline-subtitle" data-i18n="edu1_sub">Inżynier Informatyki — spec. Grafika i Projektowanie 3D</div>
+          <p class="timeline-desc" data-i18n="edu1_desc">Specjalista ds. Mediów Społecznościowych</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2017 — 2021</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Zespół Szkół Chemicznych im. Ignacego Łukasiewicza w Bydgoszczy</div>
+          <div class="timeline-subtitle" data-i18n="edu2_sub">Technik fotografii i multimediów</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- UMIEJĘTNOŚCI -->
+  <section class="cv-section">
+    <p class="cv-section-label" data-i18n="skills_label">Umiejętności</p>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-card-label" data-i18n="skill1_label">Content &amp; Produkcja</div>
+        <div class="skill-card-items" data-i18n="skill1_items">Produkcja i montaż wideo, fotografia, obróbka zdjęć, drony</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-label">Social Media</div>
+        <div class="skill-card-items" data-i18n="skill2_items">Tworzenie i publikacja treści, zarządzanie profilami, strategia</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-label">Design</div>
+        <div class="skill-card-items" data-i18n="skill3_items">Grafika, identyfikacja wizualna, storytelling wizualny</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-label" data-i18n="skill4_label">Narzędzia</div>
+        <div class="skill-pill-wrap">
+          <span class="skill-pill">DaVinci Resolve</span>
+          <span class="skill-pill">Photoshop</span>
+          <span class="skill-pill">Lightroom</span>
+          <span class="skill-pill">Affinity Designer</span>
+          <span class="skill-pill">Blender</span>
+          <span class="skill-pill">Capture One</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTYFIKATY -->
+  <section class="cv-section">
+    <p class="cv-section-label" data-i18n="certs_label">Certyfikaty</p>
+    <div class="certs-list">
+
+      <div class="cert-item">
+        <div class="cert-icon">🎬</div>
+        <div>
+          <div class="cert-name" data-i18n="cert1_name">AU.28 Realizacja projektów multimedialnych</div>
+          <div class="cert-meta" data-i18n="cert1_meta">Kwalifikacja zawodowa</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">📷</div>
+        <div>
+          <div class="cert-name" data-i18n="cert2_name">AU.23 Rejestracja, obróbka i publikacja obrazu</div>
+          <div class="cert-meta" data-i18n="cert2_meta">Kwalifikacja zawodowa</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">✈️</div>
+        <div>
+          <div class="cert-name" data-i18n="cert3_name">Europass-Mobilność — Staż zawodowy na Sycylii</div>
+          <div class="cert-meta">2019</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">🇬🇧</div>
+        <div>
+          <div class="cert-name">British Council — English Certificate C1 Advanced</div>
+          <div class="cert-meta">British Council</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">🎨</div>
+        <div>
+          <div class="cert-name" data-i18n="cert5_name">Projektowanie grafiki użytkowej z elementami zastosowania marketingu internetowego w mediach społecznościowych</div>
+          <div class="cert-meta">POWR</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="cv-footer">© 2026 Szymon Makowski — makowskifotografia@gmail.com</footer>
+
+</main>
+
+<script>
+  const cvT = {
+    pl: {
+      nav_print: "🖨️ Drukuj",
+      cv_title: "Specjalista ds. Mediów Społecznościowych & Twórca Treści",
+      cv_about: "Specjalista social media i twórca contentu — wideo, fotografia, grafika — z doświadczeniem w komunikacji cyfrowej i produkcji materiałów od koncepcji po publikację. Zajmuję się również montażem wideo, tworząc spójne narracje wizualne dla marek i projektów, które mają coś do powiedzenia.",
+      exp_label: "Doświadczenie zawodowe",
+      exp1_date: "06.2024 — obecnie",
+      exp1_sub: "Specjalista ds. Mediów Społecznościowych",
+      exp1_li1: "Zarządzanie i rozwój oficjalnych kanałów social media miasta",
+      exp1_li2: "Tworzenie i publikacja treści (wideo, foto, grafiki)",
+      exp1_li3: "Realizacja materiałów promocyjnych i relacji z wydarzeń",
+      exp1_li4: "Współtworzenie komunikacji cyfrowej i wizerunku online",
+      exp2_date: "2018 — obecnie",
+      exp2_sub: "Fotograf / Twórca Treści",
+      exp2_li1: "Realizacja projektów foto-wideo dla klientów komercyjnych i medialnych",
+      exp2_li2: "Produkcja, postprodukcja i dostarczanie materiałów promocyjnych",
+      exp2_li3: "Obsługa wydarzeń i projektów wizerunkowych",
+      edu_label: "Edukacja",
+      edu1_sub: "Inżynier Informatyki — spec. Grafika i Projektowanie 3D",
+      edu1_desc: "Specjalista ds. Mediów Społecznościowych",
+      edu2_sub: "Technik fotografii i multimediów",
+      skills_label: "Umiejętności",
+      skill1_label: "Content & Produkcja",
+      skill1_items: "Produkcja i montaż wideo, fotografia, obróbka zdjęć, drony",
+      skill2_items: "Tworzenie i publikacja treści, zarządzanie profilami, strategia",
+      skill3_items: "Grafika, identyfikacja wizualna, storytelling wizualny",
+      skill4_label: "Narzędzia",
+      certs_label: "Certyfikaty",
+      cert1_name: "AU.28 Realizacja projektów multimedialnych",
+      cert1_meta: "Kwalifikacja zawodowa",
+      cert2_name: "AU.23 Rejestracja, obróbka i publikacja obrazu",
+      cert2_meta: "Kwalifikacja zawodowa",
+      cert3_name: "Europass-Mobilność — Staż zawodowy na Sycylii",
+      cert5_name: "Projektowanie grafiki użytkowej z elementami zastosowania marketingu internetowego w mediach społecznościowych",
+    },
+    en: {
+      nav_print: "🖨️ Print",
+      cv_title: "Social Media Specialist & Content Creator",
+      cv_about: "Social media specialist and content creator — video, photography, design — with experience in digital communication and end-to-end production from concept to publication. I also handle video editing, crafting cohesive visual narratives for brands and projects that have something to say.",
+      exp_label: "Work Experience",
+      exp1_date: "06.2024 — present",
+      exp1_sub: "Social Media Specialist",
+      exp1_li1: "Managing and developing the city's official social media channels",
+      exp1_li2: "Creating and publishing content (video, photo, graphics)",
+      exp1_li3: "Producing promotional materials and event coverage",
+      exp1_li4: "Co-creating digital communication and online brand image",
+      exp2_date: "2018 — present",
+      exp2_sub: "Photographer / Content Creator",
+      exp2_li1: "Delivering photo-video projects for commercial and media clients",
+      exp2_li2: "Production, post-production and delivery of promotional materials",
+      exp2_li3: "Handling events and brand image projects",
+      edu_label: "Education",
+      edu1_sub: "IT Engineer — spec. Graphics & 3D Design",
+      edu1_desc: "Social Media Specialist",
+      edu2_sub: "Photography and Multimedia Technician",
+      skills_label: "Skills",
+      skill1_label: "Content & Production",
+      skill1_items: "Video production and editing, photography, photo editing, drones",
+      skill2_items: "Content creation and publishing, profile management, strategy",
+      skill3_items: "Graphic design, visual identity, visual storytelling",
+      skill4_label: "Tools",
+      certs_label: "Certificates",
+      cert1_name: "AU.28 Multimedia Project Production",
+      cert1_meta: "Vocational qualification",
+      cert2_name: "AU.23 Image Recording, Processing and Publishing",
+      cert2_meta: "Vocational qualification",
+      cert3_name: "Europass Mobility — Vocational internship in Sicily",
+      cert5_name: "Applied graphic design with elements of internet marketing in social media",
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('cvLang', lang);
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (cvT[lang][key] !== undefined) el.textContent = cvT[lang][key];
+    });
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    applyTheme(isDark ? 'light' : 'dark');
+  }
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+  (function () {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    const savedLang = localStorage.getItem('cvLang') || 'pl';
+    setLang(savedLang);
+  })();
+</script>
+
+</body>
+</html>
