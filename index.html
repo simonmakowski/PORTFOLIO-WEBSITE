@@ -322,6 +322,7 @@
   .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
   .project-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   .project-card:first-child { grid-column: span 2; }
+  .project-card--wide { grid-column: span 2; }
   .project-card:nth-child(2) .project-thumb { aspect-ratio: 9/16 !important; }
   .project-thumb { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
   .project-thumb::after {
@@ -685,6 +686,8 @@ async function loadProjectsConfig() {
           title: project.title,
           desc: project.desc,
           chips: project.chips,
+          hidden: project.hidden || false,
+          aspectRatio: project.aspectRatio || '16/9',
           thumbnail: project.thumbnail || null,
           gallery: project.gallery
         };
@@ -701,6 +704,8 @@ async function loadProjectsConfig() {
         title: project.title,
         desc: project.desc,
         chips: project.chips,
+        hidden: project.hidden || false,
+        aspectRatio: project.aspectRatio || '16/9',
         thumbnail: project.thumbnail || null,
         gallery: files.map(f => `${folderPath}/${f}`)
       };
@@ -920,9 +925,10 @@ function renderProjects() {
   const grid = document.getElementById('projectsGrid');
   grid.innerHTML = '';
   
-  projectsData.forEach((project, idx) => {
+  projectsData.filter(p => !p.hidden).forEach((project, idx) => {
     const div = document.createElement('div');
-    div.className = `project-card reveal ${idx > 0 ? `reveal-delay-${Math.min(idx, 3)}` : ''}`;
+    const isWide = project.id === 'project-6';
+    div.className = `project-card${isWide ? ' project-card--wide' : ''} reveal ${idx > 0 ? `reveal-delay-${Math.min(idx, 3)}` : ''}`;
     div.tabIndex = 0; // Make keyboard accessible
     div.addEventListener('click', () => openProjectLightbox(project.id));
     div.addEventListener('keydown', (e) => {

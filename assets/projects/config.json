@@ -96,7 +96,7 @@
     },
     {
       "id": "project-3",
-      "icon": "�",
+      "icon": "",
       "tag": "Fotografia",
       "title": "Sesje produktowe",
       "desc": "Profesjonalne zdjęcia i filmy produktowe dla firm. Skupienie na detalach, oświetleniu i estetyce, aby wyróżnić produkty na rynku.",
@@ -124,7 +124,7 @@
     },
     {
       "id": "project-4",
-      "icon": "🗌️",
+      "icon": "",
       "tag": "Grafika",
       "title": "Identyfikacja wizualna",
       "desc": "Logo, paleta kolorów, typografia i system identyfikacji wizualnej.",
@@ -145,6 +145,7 @@
     },
     {
       "id": "project-5",
+      "hidden": true,
       "icon": "📲",
       "tag": "Social Media",
       "title": "Kreacja Social media",
@@ -158,7 +159,7 @@
     },
     {
       "id": "project-6",
-      "icon": "�",
+      "icon": "📸",
       "tag": "Fotografia",
       "title": "Relacje z wydarzeń",
       "desc": "Kompleksowa dokumentacja wydarzeń od dużych festiwali i koncertów, przez eventy biznesowe i konferencje, po imprezy prywatne i sportowe. Dynamiczne zdjęcia i filmy, które oddają atmosferę, emocje i najważniejsze momenty wydarzenia.",
