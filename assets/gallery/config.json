@@ -1,0 +1,20 @@
+{
+  "foto": [
+    "foto/1.jpg",
+    "foto/2.jpg",
+    "foto/3.jpg"
+  ],
+  "wideo": [
+    "wideo/1.mp4",
+    "wideo/2.mp4"
+  ],
+  "grafika": [
+    "grafika/1.jpg",
+    "grafika/2.jpg",
+    "grafika/3.jpg"
+  ],
+  "social": [
+    "social/1.jpg",
+    "social/2.jpg"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "projects": [
+    {
+      "id": "project-1",
+      "icon": "📱",
+      "tag": "Fotografia",
+      "title": "Relacje z koncertów i festiwali",
+      "desc": "Kompleksowa dokumentacja wydarzenia — zdjęcia koncertowe, kulisy, crowd i dynamiczne wideo. Energetyczna relacja, która oddaje atmosferę wydarzenia.",
+      "chips": ["Instagram", "TikTok", "Rolki"],
+      "folder": "project-1",
+      "aspectRatio": "16/9"
+    },
+    {
+      "id": "project-8",
+      "icon": "🎞️",
+      "tag": "Fotografia",
+      "title": "Portrety",
+      "desc": "Indywidualne i artystyczne sesje portretowe.",
+      "chips": ["Fotografia", "Wideo"],
+      "folder": "project-8",
+      "aspectRatio": "16/9"
+    },
+    {
+      "id": "project-2",
+      "icon": "🎬",
+      "tag": "Wideo",
+      "title": "Zdjęcia i filmy z drona",
+      "desc": "Profesjonalne zdjęcia i filmy dronem, dynamiczne ujęcia krajobrazów, nieruchomości i eventów",
+      "chips": ["Wideo", "Montaż"],
+      "folder": "project-2",
+      "aspectRatio": "9/16"
+    },
+    {
+      "id": "project-3",
+      "icon": "📸",
+      "tag": "Fotografia",
+      "title": "Sesje produktowe",
+      "desc": "Profesjonalne zdjęcia i filmy produktowe dla firm. Skupienie na detalach, oświetleniu i estetyce, aby wyróżnić produkty na rynku.",
+      "chips": ["Foto", "E-commerce", "Wideo", "Social Media"],
+      "folder": "project-3",
+      "aspectRatio": "16/9"
+    },
+    {
+      "id": "project-4",
+      "icon": "🎨",
+      "tag": "Grafika",
+      "title": "Identyfikacja wizualna",
+      "desc": "Logo, paleta kolorów, typografia i system identyfikacji wizualnej.",
+      "chips": ["Branding", "Grafika"],
+      "folder": "project-4",
+      "aspectRatio": "16/9"
+    },
+    {
+      "id": "project-5",
+      "icon": "🎨",
+      "tag": "Social Media",
+      "title": "Kreacja Social media",
+      "desc": "Kompleksowa obsługa wizualna profili — posty, stories, rolki, banery i motion graphics. Spójna identyfikacja graficzna dla marek.",
+      "chips": ["Branding", "Grafika"],
+      "folder": "project-5",
+      "aspectRatio": "16/9"
+    },
+    {
+      "id": "project-6",
+      "icon": "🎨",
+      "tag": "Fotografia",
+      "title": "Relacje z wydarzeń",
+      "desc": "Kompleksowa dokumentacja wydarzeń od dużych festiwali i koncertów, przez eventy biznesowe i konferencje, po imprezy prywatne i sportowe. Dynamiczne zdjęcia i filmy, które oddają atmosferę, emocje i najważniejsze momenty wydarzenia.",
+      "chips": ["Fotografia", "Wideo"],
+      "folder": "project-6",
+      "aspectRatio": "16/9"
+    }
+  ]
+}
